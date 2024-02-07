@@ -1,4 +1,3 @@
-console.log("Welcome");
 const array = [
   {
     balance: 500000,
@@ -74,16 +73,20 @@ const addedValue = updatedData.map((item) => ({
 }));
 console.log(addedValue);
 
+// Функція для конвертації місяців в дні перед сортуванням
+function convertToDays(term, type) {
+  if (type === "M") {
+    return term * 30; // Перетворення місяців в дні (приблизно)
+  } else {
+    return term; // Дні залишаються без змін
+  }
+}
+
 // відсортувати термін за зростанням по параметру term 1 , 100 , 4 , 6  і тд.
 const sortedArray = addedValue.sort((a, b) => {
-  if (a.value.includes("місяць")) {
-    a.value.split(" ")[0] * 30;
-    console.log(a.value.split(" ")[0] * 30);
-  }
-  if (b.value.includes("місяць")) {
-    b.value.split(" ")[0] * 30;
-  }
-  return a.value - b.value;
+  const aDays = convertToDays(a.term, a.type);
+  const bDays = convertToDays(b.term, b.type);
+  return aDays - bDays;
 });
 
-// console.log(sortedArray);
+console.log(sortedArray);
