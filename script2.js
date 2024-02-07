@@ -54,22 +54,36 @@ const transformedStartDate = translatedToUAH.map((item) => ({
   dateStart: new Date(item.dateStartUnix * 1000).toLocaleDateString(),
 }));
 
-const updatedData = transformedStartDate.map((item) => {
-  delete item.dateStartUnix;
-  return item;
-});
-// console.log(updatedData);
-
 // dateEnd перекласти у формат '00.00.0000'
-const transformedEndDate = updatedData.map((item) => ({
+const transformedEndDate = transformedStartDate.map((item) => ({
   ...item,
   dateEnd: new Date(item.dateEnd).toLocaleDateString(),
 }));
 // console.log(transformedEndDate);
 
+const updatedData = transformedEndDate.map((item) => {
+  delete item.dateStartUnix;
+  return item;
+});
+// console.log(updatedData);
+
 // записати дані по term, type в об'єкт та додати ключ value зі значенная відповідно до терміну та типу
-const valueAddedArray = transformedEndDate.map((item) => ({
+const addedValue = updatedData.map((item) => ({
   ...item,
   value: `${item.term} ${item.type === "M" ? "місяць" : "день"}`,
 }));
-// console.log(valueAddedArray);
+console.log(addedValue);
+
+// відсортувати термін за зростанням по параметру term 1 , 100 , 4 , 6  і тд.
+const sortedArray = addedValue.sort((a, b) => {
+  if (a.value.includes("місяць")) {
+    a.value.split(" ")[0] * 30;
+    console.log(a.value.split(" ")[0] * 30);
+  }
+  if (b.value.includes("місяць")) {
+    b.value.split(" ")[0] * 30;
+  }
+  return a.value - b.value;
+});
+
+// console.log(sortedArray);
