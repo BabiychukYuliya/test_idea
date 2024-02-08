@@ -1,17 +1,19 @@
 console.log("Завдання 1");
 
 function test(inputArray) {
-  if (inputArray.length >= 2) {
-    let result = 0;
-    for (let i = 0; i < inputArray.length - 1; i += 1) {
-      const x = inputArray[i] * inputArray[i + 1];
-      if (result < x) {
-        result = x;
-      }
-    }
-
-    return result;
+  if (inputArray.length < 2) {
+    return "Масив має занадто мало елементів";
   }
+
+  let result = 0;
+  for (let i = 0; i < inputArray.length - 1; i += 1) {
+    const x = inputArray[i] * inputArray[i + 1];
+    if (result < x) {
+      result = x;
+    }
+  }
+
+  return result;
 }
 
 console.log(test([3, 6, -2, -5, 7, 3]));
