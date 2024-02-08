@@ -1,4 +1,4 @@
-console.log("Hello world!");
+console.log("Завдання 1");
 
 function test(inputArray) {
   if (inputArray.length >= 2) {

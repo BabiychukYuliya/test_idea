@@ -1,3 +1,5 @@
+console.log("Завдання 2");
+
 const array = [
   {
     balance: 500000,
@@ -71,7 +73,6 @@ const addedValue = updatedData.map((item) => ({
   ...item,
   value: `${item.term} ${item.type === "M" ? "місяць" : "день"}`,
 }));
-console.log(addedValue);
 
 // Функція для конвертації місяців в дні перед сортуванням
 function convertToDays(term, type) {

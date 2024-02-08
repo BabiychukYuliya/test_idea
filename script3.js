@@ -1,4 +1,5 @@
-console.log("Hi!!!!");
+console.log("Завдання 3");
+
 user1 = {
   datEnd: "2024-09-17T00:00:00",
   openDate: "2023-04-17T00:00:00",
